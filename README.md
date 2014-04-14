@@ -1,11 +1,15 @@
 PostfixCalculator
 =================
 
-Réalisation d'un calculateur en notation post-fixee
+#####*Réalisation d'un calculateur en notation post-fixee*
 
 Département Informatique, Première année
+
 Mini Projet d’Algo/Prog Java (2014)
+-----------------------------------
+
 RÉALISATION D'UN CALCULATEUR EN NOTATION POST-FIXEE:
+
 1. Présentation :
 Quand on écrit une expression arithmétique, on utilise généralement une notation dite infixée : les opérateurs +, /, - et * sont placés entre les deux expressions auxquelles ils s'appliquent. Autrement dit, les opérateurs sont entourés par les opérandes. On écrit par exemple : (3+4) * (7-5). Cette notation est la plus lisible pour un humain, mais elle n’est pas la plus simple pour un ordinateur. Il est nécessaire d’utiliser des parenthèses et la technique d'évaluation doit donc en tenir compte. Cependant, il existe donc d’autres notations qui rendent les calculs plus simples. La notation post- fixée, aussi appelée notation polonaise inverse, permet de placer les opérateurs après les opérandes : 3 4 + 7 5 - * .
 Le Tableau 1 présente des exemples d'expressions en notation in-fixée et leurs équivalences en notation post-fixée.
