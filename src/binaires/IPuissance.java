@@ -3,7 +3,7 @@ package binaires;
 /**
  * Représente la puissance
  */
-public interface IPuissance extends IElement
+public interface IPuissance extends calculator.IElement
 {
   // Aucune opération spécifique
 }

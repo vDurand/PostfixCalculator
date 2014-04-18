@@ -3,7 +3,7 @@ package unaires;
 /**
  * Représente une négation 
  */
-public interface INeg extends IElement
+public interface INeg extends calculator.IElement
 {
   // Aucune opération spécifique
 }
