@@ -11,33 +11,56 @@ Mini Projet d’Algo/Prog Java (2014)
 RÉALISATION D'UN CALCULATEUR EN NOTATION POST-FIXEE:
 
 1. Présentation :
-Quand on écrit une expression arithmétique, on utilise généralement une notation dite infixée : les opérateurs +, /, - et * sont placés entre les deux expressions auxquelles ils s'appliquent. Autrement dit, les opérateurs sont entourés par les opérandes. On écrit par exemple : (3+4) * (7-5). Cette notation est la plus lisible pour un humain, mais elle n’est pas la plus simple pour un ordinateur. Il est nécessaire d’utiliser des parenthèses et la technique d'évaluation doit donc en tenir compte. Cependant, il existe donc d’autres notations qui rendent les calculs plus simples. La notation post- fixée, aussi appelée notation polonaise inverse, permet de placer les opérateurs après les opérandes : 3 4 + 7 5 - * .
-Le Tableau 1 présente des exemples d'expressions en notation in-fixée et leurs équivalences en notation post-fixée.
-Tableau 1 : Expressions en notation in-fixée et post-fixée
-Le but de ce projet est de réaliser en langage Java, un programme calculant la valeur d’une expression arithmétique notée en post-fixée.
-2. Spécification du projet :
-a- Syntaxe des expressions :
-Les expressions seront formées des items suivants :
-		✔  des nombres décimaux positifs : 123.45 
-		✔  des 5 opérateurs binaires : + , −, *, / , et puissance (^); 
-		✔  deux opérateurs unaires : neg et cos; 
-		✔  des identificateurs que l'on supposera composés d'un seul caractère; 
 
-b- Programme principal :
-L'interface du programme proposera successivement : 1- Le choix de l'affichage des calculs.
-Et indéfiniment : 2- La saisie d'une expression arithmétique, par exemple :
-Expression à calculer : 2 4 3 2 ^ * +
-Expression à calculer : a b + d c + a / *
-3- La saisie des valeurs des identificateurs présents dans l’expression saisie, a, b, d et c, dans le cas de la deuxième expression. Dans le cas d'une expression avec opérateurs (ou fonctions), qui est censée prendre n arguments en paramètres, il faudra vérifier l'existence de ces n arguments. Nous supposerons également que la première ligne représente l'expression à calculer et les n lignes suivantes symbolisent les n variables de l'expression en question, dans leur ordre d'apparition. Par exemple pour calculer 45/9, deux identificateurs sont utilisés :
-Expression à calculer : b a / Expression de b : 45 Expression de a : 9
-Il est à noter que la saisie d'une nouvelle expression initialisera toutes les variables employées dans le calcul de l'expression précédente.
-4- A la suite d'une saisie correcte, le programme affichera la valeur de l'expression calculée en fonction des valeurs des identificateurs.
-5- Pour enregistrer le résultat de calcul, un fichier nommé « Resultats.txt » devra être créé en mode ajout. Chaque équation saisie sera écrite dans ce fichier en notation infixée avec son résultat de calcul.
-6- Dans le cas où une erreur de saisie est détectée lors de la lecture de l’expression, le programme invitera l’utilisateur à la ressaisir. De même lors de la saisie d’une valeur erronée pour un identificateur, le programme demandera à nouveau la saisie de l'expression (Retour au point 1).
+ Quand on écrit une expression arithmétique, on utilise généralement une notation dite infixée : les opérateurs +, /, -  et * sont placés entre les deux expressions auxquelles ils s'appliquent. Autrement dit, les opérateurs sont entourés  par les opérandes. On écrit par exemple : (3+4) * (7-5). Cette notation est la plus lisible pour un humain, mais elle  n’est pas la plus simple pour un ordinateur. Il est nécessaire d’utiliser des parenthèses et la technique d'évaluation  doit donc en tenir compte. Cependant, il existe donc d’autres notations qui rendent les calculs plus simples. La  notation post- fixée, aussi appelée notation polonaise inverse, permet de placer les opérateurs après les opérandes : 3  4 + 7 5 - * .
+
+ Le but de ce projet est de réaliser en langage Java, un programme calculant la valeur d’une expression arithmétique  notée en post-fixée.
+
+2. Spécification du projet :
+
+ a- Syntaxe des expressions :
+
+ Les expressions seront formées des items suivants :
+
+  * des nombres décimaux positifs : 123.45 
+  * des 5 opérateurs binaires : + , −, *, / , et puissance (^); 
+  * deux opérateurs unaires : neg et cos; 
+  * des identificateurs que l'on supposera composés d'un seul caractère; 
+
+ b- Programme principal :
+
+ L'interface du programme proposera successivement :
+ 
+  1- Le choix de l'affichage des calculs.
+  
+  Et indéfiniment :
+  
+  2- La saisie d'une expression arithmétique, par exemple :
+  
+  Expression à calculer : 2 4 3 2 ^ * +
+  
+  Expression à calculer : a b + d c + a / *
+  
+  3- La saisie des valeurs des identificateurs présents dans l’expression saisie, a, b, d et c, dans le cas de la   deuxième expression.
+  
+  Dans le cas d'une expression avec opérateurs (ou fonctions), qui est censée prendre n arguments en paramètres, il faudra vérifier l'existence de ces n arguments. Nous supposerons également que la première ligne représente l'expression à calculer et les n lignes suivantes symbolisent les n variables de l'expression en question, dans leur ordre d'apparition.
+  
+  Par exemple pour calculer 45/9, deux identificateurs sont utilisés :
+  
+   Expression à calculer : b a / Expression de b : 45 Expression de a : 9
+
+  Il est à noter que la saisie d'une nouvelle expression initialisera toutes les variables employées dans le calcul de l'expression précédente.
+
+  4- A la suite d'une saisie correcte, le programme affichera la valeur de l'expression calculée en fonction des valeurs des identificateurs.
+  
+  5- Pour enregistrer le résultat de calcul, un fichier nommé « Resultats.txt » devra être créé en mode ajout. Chaque équation saisie sera écrite dans ce fichier en notation infixée avec son résultat de calcul.
+  
+  6- Dans le cas où une erreur de saisie est détectée lors de la lecture de l’expression, le programme invitera l’utilisateur à la ressaisir. De même lors de la saisie d’une valeur erronée pour un identificateur, le programme demandera à nouveau la saisie de l'expression (Retour au point 1).
+  
 Les erreurs des tests non valides seront également stockées dans un fichier nommé « Erreurs.txt ». Quelques exemples d'erreurs sont présentés ci-dessous:
-Expression : 1 + Erreur: Argument manquant.
-Expression : 1 < 2 Erreur: Caractère invalide (<).
-Expression : 2 0 / Erreur: Division par zéro.
+ Expression : 1 + Erreur: Argument manquant.
+ Expression : 1 < 2 Erreur: Caractère invalide (<).
+ Expression : 2 0 / Erreur: Division par zéro.
 
 L'Annexe A présente un exemple d'utilisation du logiciel.
 Note : La classe Scanner sera utilisée pour lire une expression saisie depuis l’entrée standard (System.in). Les opérandes saisies sont des nombres réels (float ou double). Si l'utilisateur saisit la valeur 1.5, une exception de type java.util.InputMismatchException est levée, car un nombre réel en France s'écrit à l'aide d'une virgule, alors qu'aux États-Unis, on utilise le point. Ainsi, l’appel de useLocale est nécessaire pour que Scanner lise les flottants avec un point décimal et non une virgule, si jamais la machine est installée en français (useLocale(Locale.ENGLISH)).
