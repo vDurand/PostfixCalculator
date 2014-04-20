@@ -1,25 +1,42 @@
 package calculator;
+
 import java.util.NoSuchElementException;
 import java.util.Stack;
-
 
 /**
  * @author Valentin Durand - TP1.1 - 1A - DUT Informatique - IUT Ifs
  * @Class Element
- * @ Apr 17, 2014 4:34:27 PM
+ * @ Apr 20, 2014 5:20:22 PM
  */
-public class Element implements calculator.IElement{
-	protected Float value;
-	
-	public double calcule(IPile evaluations, IIdentifiants ids) throws IllegalStateException{
-		return 1;
+public class Element implements IElement {
+
+	/* (non-Javadoc)
+	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
+	 */
+	@Override
+	public double calcule(IPile evaluations, IIdentifiants ids)
+			throws IllegalStateException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
-	
-	public String toStringInfix(Stack<String> chaines){
-		return "";
+
+	/* (non-Javadoc)
+	 * @see calculator.IElement#toStringInfix(java.util.Stack)
+	 */
+	@Override
+	public String toStringInfix(Stack<String> chaines) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	public void analyse(Stack<Element> elements, IIdentifiants ids) throws NoSuchElementException{
-		
+
+	/* (non-Javadoc)
+	 * @see calculator.IElement#analyse(java.util.Stack, calculator.IIdentifiants)
+	 */
+	@Override
+	public void analyse(Stack<Element> elements, IIdentifiants ids)
+			throws NoSuchElementException {
+		// TODO Auto-generated method stub
+
 	}
+
 }
