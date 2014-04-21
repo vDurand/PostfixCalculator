@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
  */
 public class Expression implements IExpression {
 	
+	protected Element[] t; 
 	
 	/* (non-Javadoc)
 	 * @see calculator.IExpression#analyse(calculator.IIdentifiants)
