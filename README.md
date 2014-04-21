@@ -37,9 +37,9 @@ RÉALISATION D'UN CALCULATEUR EN NOTATION POST-FIXEE:
   
   2- La saisie d'une expression arithmétique, par exemple :
   
-  Expression à calculer : 2 4 3 2 ^ * +
+   Expression à calculer : 2 4 3 2 ^ * +
   
-  Expression à calculer : a b + d c + a / *
+   Expression à calculer : a b + d c + a / *
   
   3- La saisie des valeurs des identificateurs présents dans l’expression saisie, a, b, d et c, dans le cas de la   deuxième expression.
   
@@ -57,24 +57,45 @@ RÉALISATION D'UN CALCULATEUR EN NOTATION POST-FIXEE:
   
   6- Dans le cas où une erreur de saisie est détectée lors de la lecture de l’expression, le programme invitera l’utilisateur à la ressaisir. De même lors de la saisie d’une valeur erronée pour un identificateur, le programme demandera à nouveau la saisie de l'expression (Retour au point 1).
   
-Les erreurs des tests non valides seront également stockées dans un fichier nommé « Erreurs.txt ». Quelques exemples d'erreurs sont présentés ci-dessous:
- Expression : 1 + Erreur: Argument manquant.
- Expression : 1 < 2 Erreur: Caractère invalide (<).
- Expression : 2 0 / Erreur: Division par zéro.
+  Les erreurs des tests non valides seront également stockées dans un fichier nommé « Erreurs.txt ». Quelques exemples  d'erreurs sont présentés ci-dessous:
 
-L'Annexe A présente un exemple d'utilisation du logiciel.
-Note : La classe Scanner sera utilisée pour lire une expression saisie depuis l’entrée standard (System.in). Les opérandes saisies sont des nombres réels (float ou double). Si l'utilisateur saisit la valeur 1.5, une exception de type java.util.InputMismatchException est levée, car un nombre réel en France s'écrit à l'aide d'une virgule, alors qu'aux États-Unis, on utilise le point. Ainsi, l’appel de useLocale est nécessaire pour que Scanner lise les flottants avec un point décimal et non une virgule, si jamais la machine est installée en français (useLocale(Locale.ENGLISH)).
-c- Algorithme de calcul :
-L’algorithme général de calcul d’une expression en notation post-fixée s’effectue simplement à l’aide d'une pile. Une pile est une structure de données dans laquelle on peut ajouter et supprimer des éléments suivant la règle du dernier entré premier sorti (LIFO de l'anglais : Last In First Out). Le nom de la pile vient d'une analogie avec une pile d'assiettes (où l'on poserait et l'on prendrait toujours des assiettes sur le dessus de la pile). Les opérations de base, appelées primitives de gestion des piles sont :
-– initialiser : pour créer une pile vide, – estVide : renvoie vrai si la pile est vide, faux sinon, – empiler : cette fonction permet d'ajouter un élément au sommet de la pile, – depiler : cette fonction supprime le sommet de la pile. L'élément supprimé est retourné par la fonction depiler pour pouvoir l'utiliser.
-Par la suite, on supposera que les termes de l'expression sont entrecoupés de séparateurs ; ici le seul séparateur sera le caractère espace et les termes de l'expression seront soit un nombre flottant, soit un identificateur, soit un opérateur. L’algorithme de calcul s’explicite comme suit :
-– Si le terme courant est un nombre, le mettre sur la pile. – Si le terme courant est un opérateur, récupérer les opérandes, effectuer l’opération, puis mettre le résultat sur la pile. – L’algorithme s’arrête lorsqu’il n’y a plus de terme à extraire d'une ligne et que la pile ne contient plus qu’un seul élément : le résultat.
-S'il s'agit d'une variable (identificateur), il suffit de récupérer la valeur associée à cette variable et la mettre dans la pile.
-Une mauvaise manipulation de fichiers, de piles ou un mauvais calcul génèrent des erreurs. Ainsi, il est primordial d'intégrer le mécanisme des exceptions permettant de gérer les erreurs provoquées par de telles manipulations, par exemple :
-– Une exception sera typiquement générée lorsqu'on tente une opération sur une pile vide (retirer un terme à partir d'une pile vide par exemple). Cette exception pourra être de type NoSuchElementException et on traitera le cas d'une pile vide, en affichant un message d’erreur approprié.
-– Une exception de type ArithmeticException lorsqu'on effectue une division par 0 par exemple (auquel cas on affiche un message d’erreur approprié). – Une exception de type IOException lorsqu'on ne réussit pas à lire ou écrire à partir du fichier (auquel cas on affiche un message d’erreur approprié).
+   Expression : 1 + Erreur: Argument manquant.
+ 
+   Expression : 1 < 2 Erreur: Caractère invalide (<).
+ 
+   Expression : 2 0 / Erreur: Division par zéro.
 
-d- Fournitures :
+
+  *Note* : 
+
+  La classe Scanner sera utilisée pour lire une expression saisie depuis l’entrée standard (System.in). Les opérandes saisies sont des nombres réels (float ou double). Si l'utilisateur saisit la valeur 1.5, une exception de type java.util.InputMismatchException est levée, car un nombre réel en France s'écrit à l'aide d'une virgule, alors qu'aux États-Unis, on utilise le point. Ainsi, l’appel de useLocale est nécessaire pour que Scanner lise les flottants avec un point décimal et non une virgule, si jamais la machine est installée en français (useLocale(Locale.ENGLISH)).
+
+  c- Algorithme de calcul :
+
+   L’algorithme général de calcul d’une expression en notation post-fixée s’effectue simplement à l’aide d'une pile. Une pile est une structure de données dans laquelle on peut ajouter et supprimer des éléments suivant la règle du dernier entré premier sorti (LIFO de l'anglais : Last In First Out).
+   
+   Le nom de la pile vient d'une analogie avec une pile d'assiettes (où l'on poserait et l'on prendrait toujours des assiettes sur le dessus de la pile). Les opérations de base, appelées primitives de gestion des piles sont :
+   
+   * initialiser : pour créer une pile vide, 
+   * estVide : renvoie vrai si la pile est vide, faux sinon, 
+   * empiler : cette fonction permet d'ajouter un élément au sommet de la pile, 
+   * depiler : cette fonction supprime le sommet de la pile. L'élément supprimé est retourné par la fonction depiler pour pouvoir l'utiliser.
+
+  Par la suite, on supposera que les termes de l'expression sont entrecoupés de séparateurs ; ici le seul séparateur sera le caractère espace et les termes de l'expression seront soit un nombre flottant, soit un identificateur, soit un opérateur. L’algorithme de calcul s’explicite comme suit :
+  
+  * Si le terme courant est un nombre, le mettre sur la pile. 
+  * Si le terme courant est un opérateur, récupérer les opérandes, effectuer l’opération, puis mettre le résultat sur la pile. 
+  * L’algorithme s’arrête lorsqu’il n’y a plus de terme à extraire d'une ligne et que la pile ne contient plus qu’un seul élément : le résultat.
+
+   S'il s'agit d'une variable (identificateur), il suffit de récupérer la valeur associée à cette variable et la mettre dans la pile.
+   
+   Une mauvaise manipulation de fichiers, de piles ou un mauvais calcul génèrent des erreurs. Ainsi, il est primordial d'intégrer le mécanisme des exceptions permettant de gérer les erreurs provoquées par de telles manipulations, par exemple :
+   
+   * Une exception sera typiquement générée lorsqu'on tente une opération sur une pile vide (retirer un terme à partir d'une pile vide par exemple). Cette exception pourra être de type NoSuchElementException et on traitera le cas d'une pile vide, en affichant un message d’erreur approprié.
+   * Une exception de type ArithmeticException lorsqu'on effectue une division par 0 par exemple (auquel cas on affiche un message d’erreur approprié). 
+   * Une exception de type IOException lorsqu'on ne réussit pas à lire ou écrire à partir du fichier (auquel cas on affiche un message d’erreur approprié).
+
+  d- Fournitures :
 Les codes sources des interfaces sont mis à votre disposition sur la plate-forme moodle.
 Vous devrez respecter intégralement les interfaces des modules. Vous y ajouterez vos propres méthodes, attributs ou les classes que vous jugerez utiles pour la réalisation de votre projet.
 3. Travail à rendre et mini-soutenance
