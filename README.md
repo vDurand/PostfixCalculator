@@ -96,19 +96,27 @@ RÉALISATION D'UN CALCULATEUR EN NOTATION POST-FIXEE:
    * Une exception de type IOException lorsqu'on ne réussit pas à lire ou écrire à partir du fichier (auquel cas on affiche un message d’erreur approprié).
 
   d- Fournitures :
+  
 Les codes sources des interfaces sont mis à votre disposition sur la plate-forme moodle.
 Vous devrez respecter intégralement les interfaces des modules. Vous y ajouterez vos propres méthodes, attributs ou les classes que vous jugerez utiles pour la réalisation de votre projet.
-3. Travail à rendre et mini-soutenance
-a- Rapport et tests :
-Ce projet sera réalisé en binôme, ou éventuellement en monôme. A l’issue du projet, vous devrez rendre à votre enseignant de TP :
-✔ Un rapport (au format pdf) résumant le travail effectué. Le contenu du rapport devra présenter le travail de conception et de programmation :
-– Explication de la structure fonctionnelle de votre application ( Diagramme d'héritage schématisant les relations qui existent entre les différentes classes et interfaces (Ne mettez pas les méthodes ni les attributs dans votre diagramme pour ne pas le surcharger).
-– Présentation des différentes normes ou conventions adoptées (règles de nommage des classes, des variables, des packages,...; normes d'organisation du code et les conventions relatives à sa lisibilité : indentation entête documentaire des méthodes, des classes,...).
 
-– Justification des choix de conception orientée objet et d'implémentation. Un code inséré pour explication ou justification d'un choix donné, ne doit pas dépasser une demi-page et doit être abondamment commenté. – Représentation des résultats (Jeu de tests valides avec expressions arithmétiques correctes et jeu de tests non valides avec expressions incorrectes). Il est important de tester votre projet à l'aide de jeux de tests significatifs. Ces derniers devront prouver le bon fonctionnement de votre application. Vous pouvez également joindre des classes de test.
-– Dans la partie conclusion, discutez les limitations de votre application ainsi que les améliorations pouvant être effectuées.
-✔ Codes sources et documentation : Les codes sources devront être clairs, lisibles, correctement indentés et intelligemment annotés. Pensez à insérer des entêtes documentaires des différentes méthodes et classes. Insérez également des commentaires pour clarifier une partie du code, une variable,.... Une archive compressée nommée noms_GroupeTP.{tgz, tbz, zip, jar} devra contenir l'ensemble des codes sources de votre projet ainsi que votre rapport.
-b- Les Dates à retenir :
-Les dates suivantes sont à retenir :
-– 12 mai 2014 jusqu'à 18h : Remise du code source et du rapport (Un espace sur la plate-forme moodle sera créé pour cet effet). – 19 mai 2014 : Mini-soutenance.
-Le déroulement de la mini-soutenance est le suivant: – Chaque étudiant sera questionné individuellement (Si le projet est réalisé en binôme, un effort important devra être fait pour mettre en avant et clairement, l'implication de chacun dans la réalisation du projet). L'étudiant en question aura 5 minutes pour présenter un aspect du projet réalisé. L'examinateur n'intervient pas pendant ce temps. Attention 5 minutes, c'est court, il vaut mieux avoir planifié un exposé. – Ensuite l'examinateur aura 5 minutes pour juger le travail présenté et poser des questions.
+3. Travail à rendre et mini-soutenance
+
+ a- Rapport et tests :
+  Ce projet sera réalisé en binôme, ou éventuellement en monôme. A l’issue du projet, vous devrez rendre à votre enseignant de TP :
+  * Un rapport (au format pdf) résumant le travail effectué. Le contenu du rapport devra présenter le travail de conception et de programmation :
+   * Explication de la structure fonctionnelle de votre application ( Diagramme d'héritage schématisant les relations qui existent entre les différentes classes et interfaces (Ne mettez pas les méthodes ni les attributs dans votre diagramme pour ne pas le surcharger).
+   * Présentation des différentes normes ou conventions adoptées (règles de nommage des classes, des variables, des packages,...; normes d'organisation du code et les conventions relatives à sa lisibilité : indentation entête documentaire des méthodes, des classes,...).
+
+   * Justification des choix de conception orientée objet et d'implémentation. Un code inséré pour explication ou justification d'un choix donné, ne doit pas dépasser une demi-page et doit être abondamment commenté. – Représentation des résultats (Jeu de tests valides avec expressions arithmétiques correctes et jeu de tests non valides avec expressions incorrectes). Il est important de tester votre projet à l'aide de jeux de tests significatifs. Ces derniers devront prouver le bon fonctionnement de votre application. Vous pouvez également joindre des classes de test.
+   * Dans la partie conclusion, discutez les limitations de votre application ainsi que les améliorations pouvant être effectuées.
+  * Codes sources et documentation : Les codes sources devront être clairs, lisibles, correctement indentés et intelligemment annotés. Pensez à insérer des entêtes documentaires des différentes méthodes et classes. Insérez également des commentaires pour clarifier une partie du code, une variable,.... Une archive compressée nommée noms_GroupeTP.{tgz, tbz, zip, jar} devra contenir l'ensemble des codes sources de votre projet ainsi que votre rapport.
+
+ b- Les Dates à retenir :
+ 
+  Les dates suivantes sont à retenir :
+  * 12 mai 2014 jusqu'à 18h : Remise du code source et du rapport (Un espace sur la plate-forme moodle sera créé pour cet effet).
+  * 19 mai 2014 : Mini-soutenance.
+  Le déroulement de la mini-soutenance est le suivant: 
+  * Chaque étudiant sera questionné individuellement (Si le projet est réalisé en binôme, un effort important devra être fait pour mettre en avant et clairement, l'implication de chacun dans la réalisation du projet). L'étudiant en question aura 5 minutes pour présenter un aspect du projet réalisé. L'examinateur n'intervient pas pendant ce temps. Attention 5 minutes, c'est court, il vaut mieux avoir planifié un exposé. 
+  * Ensuite l'examinateur aura 5 minutes pour juger le travail présenté et poser des questions.
