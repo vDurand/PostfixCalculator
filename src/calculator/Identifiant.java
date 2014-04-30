@@ -35,7 +35,7 @@ public class Identifiant implements IIdentifiant {
 	 * @see calculator.IElement#analyse(java.util.Stack, calculator.IIdentifiants)
 	 */
 	@Override
-	public void analyse(Stack<Element> elements, IIdentifiants ids)
+	public void analyse(Stack<IElement> elements, IIdentifiants ids)
 			throws NoSuchElementException {
 		// TODO Auto-generated method stub
 

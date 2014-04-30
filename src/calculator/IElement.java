@@ -31,6 +31,6 @@ public interface IElement
    * @param ids Les identifiants en cours. Sera éventuellement modifié par l'ajout d'identifiants.
    * @throws NoSuchElementException si cet élément est incompatible avec la pile 
    */
-  public void analyse(Stack<Element> elements, IIdentifiants ids) throws NoSuchElementException;
+  public void analyse(Stack<IElement> elements, IIdentifiants ids) throws NoSuchElementException;
 
 }
