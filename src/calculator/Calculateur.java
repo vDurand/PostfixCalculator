@@ -17,7 +17,8 @@ public class Calculateur {
 		while(true){
 			System.out.println("Entrez une formule (chaque element doit etre separer par un espace):");
 			Expression e1=new Expression(entree.nextLine());
-			System.out.println(e1.toStringInfix());
+			System.out.println("Postfixe : " + e1.toString());
+			System.out.println("Infixe : " + e1.toStringInfix());
 		}
 
 	}
