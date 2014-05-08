@@ -12,20 +12,34 @@ import java.util.StringTokenizer;
 public class Expression implements IExpression {
 	
 	protected String contenu;
-	protected Stack<String> liste = new Stack<String>();
+	protected Stack<String> pile = new Stack<String>();
+	String [] liste;
 	
 	/**
 	 * Constructeur : Expression
 	 */
 	public Expression(String contenu) {
 		this.contenu = contenu;
+		this.StringToTab();
 	}
 	
-	public void Listage() {
+	public void StringToPile() {
 		StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
 		
 		while (contenuTokenized.hasMoreTokens()) {
-			liste.push(contenuTokenized.nextToken());
+			pile.push(contenuTokenized.nextToken());
+		}
+	}
+	
+	public void StringToTab() {
+		int size = 1+contenu.length()/2;
+		liste = new String [size];
+		StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
+		int i = 0;
+		
+		while (contenuTokenized.hasMoreTokens()) {
+			liste[i] = contenuTokenized.nextToken();
+			i++;
 		}
 	}
 	
@@ -37,7 +51,11 @@ public class Expression implements IExpression {
 	   */
 	@Override
 	public void analyse(IIdentifiants ids) throws NoSuchElementException {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < liste.length; i++) {
+			if(liste[i].matches("[a-zA-Z]")){
+				System.out.print("Expression de" + liste[i] + " : ");
+			}
+		}
 
 	}
 

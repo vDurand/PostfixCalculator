@@ -13,12 +13,17 @@ public class Calculateur {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Bienvenue sur le calculateur en notation post-fixee");
+		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+		System.out.println("|| Bienvenue sur le calculateur en notation post-fixee ||");
+		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
 		while(true){
-			System.out.println("Entrez une formule (chaque element doit etre separer par un espace):");
+			System.out.println("Veuillez entrer une formule (chaque element doit etre separer par un espace).");
+			System.out.print("Expression a calculer : ");
 			Expression e1=new Expression(entree.nextLine());
-			System.out.println("Postfixe : " + e1.toString());
-			System.out.println("Infixe : " + e1.toStringInfix());
+			System.out.println("Expression Postfixe : " + e1.toString());
+			System.out.println("Expression Infixe : " + e1.toStringInfix());
+			
+			System.out.println("\n\n *OVER*");
 		}
 
 	}
