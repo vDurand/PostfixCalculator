@@ -3,6 +3,7 @@ package calculator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 import java.util.StringTokenizer;
+import java.util.Scanner;
 
 /**
  * @author Valentin Durand - TP1.1 - 1A - DUT Informatique - IUT Ifs
@@ -51,9 +52,12 @@ public class Expression implements IExpression {
 	   */
 	@Override
 	public void analyse(IIdentifiants ids) throws NoSuchElementException {
+		Scanner entreeEle = new Scanner(System.in);
+		
 		for (int i = 0; i < liste.length; i++) {
 			if(liste[i].matches("[a-zA-Z]")){
 				System.out.print("Expression de" + liste[i] + " : ");
+				ids.tab[0] = new Identifiant(liste[i], entreeEle.nextLine());
 			}
 		}
 
