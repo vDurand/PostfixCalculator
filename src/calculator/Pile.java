@@ -1,7 +1,6 @@
 package calculator;
 
 import java.util.NoSuchElementException;
-import java.util.Stack;
 
 /**
  * @author Valentin Durand - TP1.1 - 1A - DUT Informatique - IUT Ifs
@@ -10,8 +9,16 @@ import java.util.Stack;
  */
 public class Pile implements IPile {
 
-	protected Stack<String> liste = new Stack<String>();
+	private Double [] liste;
+	private int location;
 	
+	/**
+	 * Constructeur : Pile
+	 */
+	public Pile(int size) {
+		liste  = new Double [size];
+		location = 0;
+	}
 	  /**
 	   * Empile une valeur.
 	   * Imprime la description sur la sortie standard si le mode de débogage est activé.
@@ -19,26 +26,29 @@ public class Pile implements IPile {
 	   */
 	@Override
 	public void ajoute(Double valeur) {
-		// TODO Auto-generated method stub
-
+		liste[location] = valeur;
+		location++;
 	}
 
-	/* (non-Javadoc)
-	 * @see calculator.IPile#retire()
-	 */
+	  /**
+	   * Dépile une valeur
+	   * @return la valeur dépilée
+	   * @throws NoSuchElementException si la pile est vide
+	   */
 	@Override
 	public Double retire() throws NoSuchElementException {
-		// TODO Auto-generated method stub
-		return null;
+		if (estVide()) throw new NoSuchElementException();
+	    location--;
+	    return  liste[location];
 	}
 
-	/* (non-Javadoc)
-	 * @see calculator.IPile#estVide()
-	 */
+	  /**
+	   * Teste si la pile est vide
+	   * @return vrai ssi la pile est vide
+	   */
 	@Override
 	public boolean estVide() {
-		// TODO Auto-generated method stub
-		return false;
+		return (location<=0);
 	}
 
 }
