@@ -41,6 +41,18 @@ public class Pile implements IPile {
 	    location--;
 	    return  liste[location];
 	}
+	
+	@Override
+	 public String toString(){
+		String display = "[ ";
+		for(int i = 0; i < location; i++){
+			display += liste[i];
+			if(i!=location-1)
+				display += ", ";
+		}
+		display += " ]";
+		return display;
+	}
 
 	  /**
 	   * Teste si la pile est vide
