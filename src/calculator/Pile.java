@@ -37,7 +37,8 @@ public class Pile implements IPile {
 	   */
 	@Override
 	public Double retire() throws NoSuchElementException {
-		if (estVide()) throw new NoSuchElementException();
+		if (estVide())
+			throw new NoSuchElementException();
 	    location--;
 	    return  liste[location];
 	}
@@ -45,9 +46,9 @@ public class Pile implements IPile {
 	@Override
 	 public String toString(){
 		String display = "[ ";
-		for(int i = 0; i < location; i++){
+		for(int i = location-1; i >= 0; i--){
 			display += liste[i];
-			if(i!=location-1)
+			if(i!=0)
 				display += ", ";
 		}
 		display += " ]";

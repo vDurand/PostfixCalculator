@@ -9,7 +9,7 @@ import java.util.Stack;
  * @ May 9, 2014 6:24:04 PM
  */
 public class Element implements IElement {
-
+	
 	  /**
 	   * Calcule la valeur de cet élément.
 	   * @param evaluations la pile d'évaluation. Sera modifiée par l'élément

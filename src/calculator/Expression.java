@@ -13,8 +13,8 @@ import java.util.Scanner;
 public class Expression implements IExpression {
 	
 	protected String contenu;
-	protected Stack<String> pile = new Stack<String>();
-	String [] liste;
+	protected Stack<IElement> expression = new Stack<IElement>();
+	IElement [] liste;
 	
 	/**
 	 * Constructeur : Expression
@@ -26,22 +26,48 @@ public class Expression implements IExpression {
 	
 	public void StringToPile() {
 		StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
+		int i = 0;
 		
 		while (contenuTokenized.hasMoreTokens()) {
-			pile.push(contenuTokenized.nextToken());
+			String current = contenuTokenized.nextToken();
+			
+			if((current.matches("[+-/^*]"))||(current.equals("neg"))||(current.equals("cos"))){
+				switch (current){
+				case "+": liste[i] = new binaires.Addition(); expression.push(liste[i]);
+				break;
+				case "/": liste[i] = new binaires.Division(); expression.push(liste[i]);
+				break;
+				case "*": liste[i] = new binaires.Multiplication(); expression.push(liste[i]);
+				break;
+				case "^": liste[i] = new binaires.Puissance(); expression.push(liste[i]);
+				break;
+				case "-": liste[i] = new binaires.Soustraction(); expression.push(liste[i]);
+				break;
+				case "cos": liste[i] = new unaires.Cos(); expression.push(liste[i]);
+				break;
+				case "neg": liste[i] = new unaires.Neg(); expression.push(liste[i]);
+				break;
+				}
+			}
+			else if(current.matches("[a-zA-Z]")){
+				liste[i] = new Identifiant(); expression.push(liste[i]);
+			}
+			else{
+				liste[i] = new Nombre(); expression.push(liste[i]);
+			}
 		}
 	}
 	
 	public void StringToTab() {
 		int size = 1+contenu.length()/2;
-		liste = new String [size];
-		StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
+		liste = new Element [size];
+		/*StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
 		int i = 0;
 		
 		while (contenuTokenized.hasMoreTokens()) {
 			liste[i] = contenuTokenized.nextToken();
 			i++;
-		}
+		}*/
 	}
 	
 	  /**
@@ -52,12 +78,12 @@ public class Expression implements IExpression {
 	   */
 	@Override
 	public void analyse(IIdentifiants ids) throws NoSuchElementException {
-		Scanner entreeEle = new Scanner(System.in);
+		Scanner entreeElement = new Scanner(System.in);
 		
 		for (int i = 0; i < liste.length; i++) {
 			if(liste[i].matches("[a-zA-Z]")){
 				System.out.print("Expression de" + liste[i] + " : ");
-				ids.tab[0] = new Identifiant(liste[i], entreeEle.nextLine());
+				//ids.tab[0] = new Identifiant(liste[i], entreeElement.nextLine());
 			}
 		}
 
