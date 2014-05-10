@@ -20,9 +20,10 @@ public class Calculateur {
 			System.out.println("Veuillez entrer une formule (chaque element doit etre separer par un espace).");
 			System.out.print("Expression a calculer : ");
 			Expression e1=new Expression(entree.nextLine());
-			System.out.println("Expression Postfixe : " + e1.toString());
-			System.out.println("Expression Infixe : " + e1.toStringInfix());
+			Pile calculateur = new Pile(e1.taille);
+			IIdentifiants ids = null;
 			
+			System.out.println("> " + e1.toStringInfix() + " = " + e1.calcule(calculateur, ids));
 			System.out.println("\n\n *OVER*");
 		}
 

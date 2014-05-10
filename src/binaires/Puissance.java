@@ -27,8 +27,10 @@ public class Puissance extends calculator.Operateur implements IPuissance {
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return 0;
+		Double exposant = evaluations.retire();
+		Double resultat = Math.pow(evaluations.retire(), exposant);
+		evaluations.ajoute(resultat);
+		return resultat;
 	}
 
 	/* (non-Javadoc)

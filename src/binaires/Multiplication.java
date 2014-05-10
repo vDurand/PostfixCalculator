@@ -27,8 +27,9 @@ public class Multiplication extends calculator.Operateur implements IMultiplicat
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return 0;
+		Double resultat = evaluations.retire()*evaluations.retire();
+		evaluations.ajoute(resultat);
+		return resultat;
 	}
 
 	/* (non-Javadoc)

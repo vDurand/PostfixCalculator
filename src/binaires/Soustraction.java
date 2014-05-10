@@ -27,8 +27,10 @@ public class Soustraction extends calculator.Operateur implements ISoustration {
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return 0;
+		Double soustracteur = evaluations.retire();
+		Double resultat = evaluations.retire()-soustracteur;
+		evaluations.ajoute(resultat);
+		return resultat;
 	}
 
 	/* (non-Javadoc)

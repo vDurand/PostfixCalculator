@@ -15,6 +15,7 @@ public class Expression implements IExpression {
 	protected String contenu;
 	protected Stack<Element> expression;
 	Element [] liste;
+	int taille;
 	
 	/**
 	 * Constructeur : Expression
@@ -22,12 +23,14 @@ public class Expression implements IExpression {
 	public Expression(String contenu) {
 		this.contenu = contenu;
 		expression  = new Stack<Element>();
+		taille = 0;
 		this.StringToTab();
 		this.StringToPile();
 	}
 	
 	public void StringToPile() {
-		StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
+		String reverse = new StringBuffer(contenu).reverse().toString();
+		StringTokenizer contenuTokenized = new StringTokenizer(reverse," ",false);
 		int i = 0;
 		
 		while (contenuTokenized.hasMoreTokens()) {
@@ -57,7 +60,9 @@ public class Expression implements IExpression {
 			else{
 				liste[i] = new Nombre(Double.parseDouble(current)); expression.push(liste[i]);
 			}
+			i++;
 		}
+		taille = i;
 	}
 	
 	public void StringToTab() {
@@ -100,8 +105,11 @@ public class Expression implements IExpression {
 	   */
 	@Override
 	public double calcule(IPile pile, IIdentifiants ids) {
-		// TODO Auto-generated method stub
-		return 0;
+		for(int i=0; i<taille; i++){
+			expression.pop().calcule(pile, ids);
+			System.out.println(pile);
+		}
+		return pile.retire();
 	}
 
 	  /**

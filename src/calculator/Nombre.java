@@ -22,7 +22,7 @@ public class Nombre extends Element implements INombre {
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
-		// TODO Auto-generated method stub
+		evaluations.ajoute(val);
 		return 0;
 	}
 

@@ -27,8 +27,9 @@ public class Addition extends calculator.Operateur implements IAddition {
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return 0;
+		Double resultat = evaluations.retire()+evaluations.retire();
+		evaluations.ajoute(resultat);
+		return resultat;
 	}
 
 	/* (non-Javadoc)

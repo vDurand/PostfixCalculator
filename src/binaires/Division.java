@@ -27,8 +27,10 @@ public class Division extends calculator.Operateur implements IDivision {
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return 0;
+		Double diviseur = evaluations.retire();
+		Double resultat = evaluations.retire()/diviseur;
+		evaluations.ajoute(resultat);
+		return resultat;
 	}
 
 	/* (non-Javadoc)
