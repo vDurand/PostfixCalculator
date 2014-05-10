@@ -29,13 +29,20 @@ public class Expression implements IExpression {
 	}
 	
 	public void StringToPile() {
-		String reverse = new StringBuffer(contenu).reverse().toString();
-		StringTokenizer contenuTokenized = new StringTokenizer(reverse," ",false);
+		StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
 		int i = 0;
+		Stack<String> temp = new Stack<String>();
 		
 		while (contenuTokenized.hasMoreTokens()) {
-			String current = contenuTokenized.nextToken();
-			
+			temp.push(contenuTokenized.nextToken());
+			i++;
+		}
+		taille = i;
+		String current;
+		i = 0;
+		while(!temp.empty()){
+			System.out.println(temp.peek());
+			current = temp.pop();
 			if((current.matches("[+-/^*]"))||(current.equals("neg"))||(current.equals("cos"))){
 				switch (current){
 				case "+": liste[i] = new binaires.Addition(); expression.push(liste[i]);
@@ -62,7 +69,6 @@ public class Expression implements IExpression {
 			}
 			i++;
 		}
-		taille = i;
 	}
 	
 	public void StringToTab() {
