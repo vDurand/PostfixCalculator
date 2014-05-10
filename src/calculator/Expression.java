@@ -137,13 +137,17 @@ public class Expression implements IExpression {
 		
 		while (contenuTokenized.hasMoreTokens()) {
 			String current = contenuTokenized.nextToken();
-			if((current.matches("[+-/^*]"))||(current.equals("neg"))||(current.equals("cos"))) {
+			if(current.matches("[+-/^*]")) {
 				String temp = contenuInfix[i-2];
 				if((current.equals("+"))||(current.equals("-"))||(current.equals("^")))
 					contenuInfix[i-2] = "(" + temp + current + contenuInfix[i-1] + ")";
 				else
 					contenuInfix[i-2] = temp + current + contenuInfix[i-1];
 				i--;
+			}
+			else if((current.equals("neg"))||(current.equals("cos"))) {
+				String temp = contenuInfix[i-1];
+				contenuInfix[i-1] = current + "(" + temp + ")";
 			}
 			else {
 				contenuInfix[i] = current;

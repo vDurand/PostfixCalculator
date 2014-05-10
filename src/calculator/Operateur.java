@@ -16,23 +16,16 @@ public class Operateur extends Element implements IOperateur {
 	public Operateur(String s) {
 		symbole = s;
 	}
-	/* (non-Javadoc)
-	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
-	 */
-	@Override
-	public double calcule(IPile evaluations, IIdentifiants ids)
-			throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	/* (non-Javadoc)
-	 * @see calculator.IElement#toStringInfix(java.util.Stack)
-	 */
+	  /**
+	   * Construit une représentation infixe de cet élément à l'aide d'une pile, et l'ajoute sur la pile.
+	   * @param chaines une pile de représentations infixes.
+	   * @return la chaîne représentant cet élément de manière infixe.
+	   */
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
-		// TODO Auto-generated method stub
-		return null;
+		String val = chaines.push("(" + chaines.pop() + symbole + chaines.pop() + ")");
+		return val;
 	}
 
 	/* (non-Javadoc)

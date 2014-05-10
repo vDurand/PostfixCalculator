@@ -27,8 +27,9 @@ public class Neg extends calculator.Operateur implements INeg {
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return 0;
+		Double resultat = -evaluations.retire();
+		evaluations.ajoute(resultat);
+		return resultat;
 	}
 
 	/* (non-Javadoc)
@@ -36,8 +37,8 @@ public class Neg extends calculator.Operateur implements INeg {
 	 */
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
-		// TODO Auto-generated method stub
-		return null;
+		String val = chaines.push(symbole + "(" + chaines.pop() + ")");
+		return val;
 	}
 
 	/* (non-Javadoc)
