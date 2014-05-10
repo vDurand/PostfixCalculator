@@ -81,7 +81,7 @@ public class Expression implements IExpression {
 				break;
 				}
 			}
-			else if(current.matches("[a-zA-Z]")){
+			/*else if(current.matches("^[a-zA-Z].*")){
 				@SuppressWarnings("resource")
 				Scanner idEntree = new Scanner(System.in);
 				System.out.print("Expressions de " + current + " : ");
@@ -91,6 +91,18 @@ public class Expression implements IExpression {
 			}
 			else{
 				liste[i] = new Nombre(Double.parseDouble(current)); expression.push(liste[i]);
+			}
+			i++;*/
+			else if(current.matches("^[0-9].*")){
+				liste[i] = new Nombre(Double.parseDouble(current)); expression.push(liste[i]);
+			}
+			else{
+				@SuppressWarnings("resource")
+				Scanner idEntree = new Scanner(System.in);
+				System.out.print("Expressions de " + current + " : ");
+				Expression e2=new Expression(idEntree.nextLine());
+				liste[i] = new Identifiant(current, e2);
+				expression.push(liste[i]);
 			}
 			i++;
 		}
