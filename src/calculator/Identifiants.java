@@ -9,8 +9,8 @@ import java.util.NoSuchElementException;
  */
 public class Identifiants implements IIdentifiants {
 	
-	private Identifiant [] idList;
-	private int numberId;
+	protected Identifiant [] idList;
+	private static int numberId;
 	
 	/**
 	 * Constructeur : Identifiants
@@ -44,6 +44,7 @@ public class Identifiants implements IIdentifiants {
 			throw new IllegalAccessError();
 		idList[numberId].setSymbole(id);
 		idList[numberId].setValeur(null);
+		numberId++;
 	}
 
 	  /**
@@ -84,9 +85,9 @@ public class Identifiants implements IIdentifiants {
 	}
 	
 	  /**
-	   * Récupère le nom d'un identifiant.
-	   * @param idx le numéro de l'identifiant à récupérer
-	   * @return la chaîne décrivant l'identifiant.
+	   * Récupère le numero d'un identifiant.
+	   * @param la chaîne décrivant l'identifiant
+	   * @return idx le numéro de l'identifiant à récupérer.
 	   */
 	public int getIdx(String id) {
 		int trouve = -1;

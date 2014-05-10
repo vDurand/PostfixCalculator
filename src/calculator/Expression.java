@@ -14,21 +14,41 @@ public class Expression implements IExpression {
 	
 	protected String contenu;
 	protected Stack<Element> expression;
-	Element [] liste;
-	int taille;
+	protected Element [] liste;
+	protected int taille;
+	protected IIdentifiants ids;
+	private boolean affichagePile;
 	
 	/**
 	 * Constructeur : Expression
 	 */
 	public Expression(String contenu) {
+		affichagePile = false;
 		this.contenu = contenu;
 		expression  = new Stack<Element>();
 		taille = 0;
 		this.StringToTab();
-		this.StringToPile();
+		this.analyse(ids);
 	}
 	
-	public void StringToPile() {
+	public void showPile(){
+		affichagePile = true;
+	}
+	
+	public void StringToTab() {
+		int size = 1+contenu.length()/2;
+		liste = new Element [size];
+		ids = new Identifiants(size);
+	}
+	
+	  /**
+	   * Analyse cette expression et vérifie si elle est légale.
+	   * Répertorie les identifiants dont elle a besoin.
+	   * @param ids les identifiants en cours. Sera éventuellement modifié par l'ajout de nouveaux identifiants.
+	   * @throws NoSuchElementException si cette expression est incorrecte.
+	   */
+	@Override
+	public void analyse(IIdentifiants ids) throws NoSuchElementException {
 		StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
 		int i = 0;
 		Stack<String> temp = new Stack<String>();
@@ -41,7 +61,7 @@ public class Expression implements IExpression {
 		String current;
 		i = 0;
 		while(!temp.empty()){
-			System.out.println(temp.peek());
+			//System.out.println(temp.peek());
 			current = temp.pop();
 			if((current.matches("[+-/^*]"))||(current.equals("neg"))||(current.equals("cos"))){
 				switch (current){
@@ -62,44 +82,18 @@ public class Expression implements IExpression {
 				}
 			}
 			else if(current.matches("[a-zA-Z]")){
-				liste[i] = new Identifiant(); expression.push(liste[i]);
+				@SuppressWarnings("resource")
+				Scanner idEntree = new Scanner(System.in);
+				System.out.print("Expressions de " + current + " : ");
+				Expression e2=new Expression(idEntree.nextLine());
+				liste[i] = new Identifiant(current, e2);
+				expression.push(liste[i]);
 			}
 			else{
 				liste[i] = new Nombre(Double.parseDouble(current)); expression.push(liste[i]);
 			}
 			i++;
 		}
-	}
-	
-	public void StringToTab() {
-		int size = 1+contenu.length()/2;
-		liste = new Element [size];
-		/*StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
-		int i = 0;
-		
-		while (contenuTokenized.hasMoreTokens()) {
-			liste[i] = contenuTokenized.nextToken();
-			i++;
-		}*/
-	}
-	
-	  /**
-	   * Analyse cette expression et vérifie si elle est légale.
-	   * Répertorie les identifiants dont elle a besoin.
-	   * @param ids les identifiants en cours. Sera éventuellement modifié par l'ajout de nouveaux identifiants.
-	   * @throws NoSuchElementException si cette expression est incorrecte.
-	   */
-	@Override
-	public void analyse(IIdentifiants ids) throws NoSuchElementException {
-		/*Scanner entreeElement = new Scanner(System.in);
-		
-		for (int i = 0; i < liste.length; i++) {
-			if(liste[i].matches("[a-zA-Z]")){
-				System.out.print("Expression de" + liste[i] + " : ");
-				//ids.tab[0] = new Identifiant(liste[i], entreeElement.nextLine());
-			}
-		}*/
-
 	}
 
 	  /**
@@ -113,7 +107,8 @@ public class Expression implements IExpression {
 	public double calcule(IPile pile, IIdentifiants ids) {
 		for(int i=0; i<taille; i++){
 			expression.pop().calcule(pile, ids);
-			System.out.println(pile);
+			if(affichagePile)
+				System.out.println(pile);
 		}
 		return pile.retire();
 	}

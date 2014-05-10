@@ -17,13 +17,15 @@ public class Calculateur {
 		System.out.println("|| Bienvenue sur le calculateur en notation post-fixee ||");
 		System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
 		while(true){
-			System.out.println("Veuillez entrer une formule (chaque element doit etre separer par un espace).");
-			System.out.print("Expression a calculer : ");
+			System.out.println("Veuillez entrer une formule (chaque element doit etre separe par un espace).");
+			System.out.print("Voulez-vous afficher la pile des calculs effectués ? (Oui/Non) : ");
+			String reponse = entree.nextLine();
+			System.out.print("\n\nExpression a calculer : ");
 			Expression e1=new Expression(entree.nextLine());
+			if(reponse.equals("Oui"))
+				e1.showPile();
 			Pile calculateur = new Pile(e1.taille);
-			IIdentifiants ids = null;
-			
-			System.out.println("> " + e1.toStringInfix() + " = " + e1.calcule(calculateur, ids));
+			System.out.println("> " + e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids));
 			System.out.println("\n\n *OVER*");
 		}
 

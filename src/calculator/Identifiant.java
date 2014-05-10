@@ -69,8 +69,10 @@ public class Identifiant extends Element implements IIdentifiant {
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return 0;
+		Pile calculator = new Pile(5);
+		Double resultat = valeur.calcule(calculator, ids);
+		evaluations.ajoute(resultat);
+		return resultat;
 	}
 
 	  /**
