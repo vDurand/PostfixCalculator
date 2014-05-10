@@ -10,15 +10,6 @@ import java.util.Stack;
  */
 public class Element implements IElement {
 	
-	private Stack<String> element;
-	
-	/**
-	 * Constructeur : Element
-	 */
-	public Element() {
-		element = new Stack<String>();
-	}
-	
 	  /**
 	   * Calcule la valeur de cet élément.
 	   * @param evaluations la pile d'évaluation. Sera modifiée par l'élément

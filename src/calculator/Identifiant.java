@@ -8,7 +8,7 @@ import java.util.Stack;
  * @Class Identifiant
  * @ May 8, 2014 6:51:45 PM
  */
-public class Identifiant implements IIdentifiant {
+public class Identifiant extends Element implements IIdentifiant {
 
 	private String symbole;
 	private IExpression valeur;
@@ -26,7 +26,7 @@ public class Identifiant implements IIdentifiant {
 	 * @param s
 	 * @param v
 	 */
-	public Identifiant(String s, Expression v) {
+	public Identifiant(String s, IExpression v) {
 		setSymbole(s);
 		setValeur(v);
 	}

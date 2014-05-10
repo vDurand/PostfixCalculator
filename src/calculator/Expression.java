@@ -13,15 +13,17 @@ import java.util.Scanner;
 public class Expression implements IExpression {
 	
 	protected String contenu;
-	protected Stack<IElement> expression = new Stack<IElement>();
-	IElement [] liste;
+	protected Stack<Element> expression;
+	Element [] liste;
 	
 	/**
 	 * Constructeur : Expression
 	 */
 	public Expression(String contenu) {
 		this.contenu = contenu;
+		expression  = new Stack<Element>();
 		this.StringToTab();
+		this.StringToPile();
 	}
 	
 	public void StringToPile() {
@@ -53,7 +55,7 @@ public class Expression implements IExpression {
 				liste[i] = new Identifiant(); expression.push(liste[i]);
 			}
 			else{
-				liste[i] = new Nombre(); expression.push(liste[i]);
+				liste[i] = new Nombre(Double.parseDouble(current)); expression.push(liste[i]);
 			}
 		}
 	}
@@ -78,14 +80,14 @@ public class Expression implements IExpression {
 	   */
 	@Override
 	public void analyse(IIdentifiants ids) throws NoSuchElementException {
-		Scanner entreeElement = new Scanner(System.in);
+		/*Scanner entreeElement = new Scanner(System.in);
 		
 		for (int i = 0; i < liste.length; i++) {
 			if(liste[i].matches("[a-zA-Z]")){
 				System.out.print("Expression de" + liste[i] + " : ");
 				//ids.tab[0] = new Identifiant(liste[i], entreeElement.nextLine());
 			}
-		}
+		}*/
 
 	}
 

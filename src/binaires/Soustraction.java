@@ -12,8 +12,15 @@ import calculator.IPile;
  * @Class Soustraction
  * @ May 9, 2014 10:18:35 PM
  */
-public class Soustraction implements ISoustration {
+public class Soustraction extends calculator.Operateur implements ISoustration {
 
+	/**
+	 * Constructeur : Soustraction
+	 */
+	public Soustraction() {
+		super("-");
+	}
+	
 	/* (non-Javadoc)
 	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
 	 */

@@ -12,8 +12,15 @@ import calculator.IPile;
  * @Class Multiplication
  * @ May 9, 2014 10:18:01 PM
  */
-public class Multiplication implements IMultiplication {
+public class Multiplication extends calculator.Operateur implements IMultiplication {
 
+	/**
+	 * Constructeur : Multiplication
+	 */
+	public Multiplication() {
+		super("*");
+	}
+	
 	/* (non-Javadoc)
 	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
 	 */

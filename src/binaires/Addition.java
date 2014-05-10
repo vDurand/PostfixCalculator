@@ -12,13 +12,13 @@ import calculator.IPile;
  * @Class Addition
  * @ May 9, 2014 10:11:41 PM
  */
-public class Addition implements IAddition {
+public class Addition extends calculator.Operateur implements IAddition {
 
 	/**
 	 * Constructeur : Addition
 	 */
 	public Addition() {
-		// TODO Auto-generated constructor stub
+		super("+");
 	}
 	
 	/* (non-Javadoc)

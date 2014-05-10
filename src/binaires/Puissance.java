@@ -12,8 +12,15 @@ import calculator.IPile;
  * @Class Puissance
  * @ May 9, 2014 10:18:18 PM
  */
-public class Puissance implements IPuissance {
+public class Puissance extends calculator.Operateur implements IPuissance {
 
+	/**
+	 * Constructeur : Puissance
+	 */
+	public Puissance() {
+		super("^");
+	}
+	
 	/* (non-Javadoc)
 	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
 	 */

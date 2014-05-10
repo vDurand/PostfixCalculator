@@ -12,8 +12,15 @@ import calculator.IPile;
  * @Class Cos
  * @ May 9, 2014 10:20:34 PM
  */
-public class Cos implements ICos {
+public class Cos extends calculator.Operateur implements ICos {
 
+	/**
+	 * Constructeur : Cos
+	 */
+	public Cos() {
+		super("cos");
+	}
+	
 	/* (non-Javadoc)
 	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
 	 */

@@ -12,8 +12,15 @@ import calculator.IPile;
  * @Class Neg
  * @ May 9, 2014 10:20:51 PM
  */
-public class Neg implements INeg {
+public class Neg extends calculator.Operateur implements INeg {
 
+	/**
+	 * Constructeur : Neg
+	 */
+	public Neg() {
+		super("neg");
+	}
+	
 	/* (non-Javadoc)
 	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
 	 */

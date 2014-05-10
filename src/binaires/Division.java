@@ -12,8 +12,15 @@ import calculator.IPile;
  * @Class Division
  * @ May 9, 2014 10:17:29 PM
  */
-public class Division implements IDivision {
+public class Division extends calculator.Operateur implements IDivision {
 
+	/**
+	 * Constructeur : Division
+	 */
+	public Division() {
+		super("/");
+	}
+	
 	/* (non-Javadoc)
 	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
 	 */

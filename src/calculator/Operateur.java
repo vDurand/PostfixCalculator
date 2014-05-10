@@ -5,16 +5,16 @@ import java.util.Stack;
 
 /**
  * @author Valentin Durand - TP1.1 - 1A - DUT Informatique - IUT Ifs
- * @Class Nombre
- * @ May 9, 2014 10:28:53 PM
+ * @Class Operateur
+ * @ May 10, 2014 3:26:03 PM
  */
-public class Nombre extends Element implements INombre {
-	protected Double val;
+public class Operateur extends Element implements IOperateur {
+	protected String symbole;
 	/**
-	 * Constructeur : Nombre
+	 * Constructeur : Operateur
 	 */
-	public Nombre(Double d) {
-		val = d;
+	public Operateur(String s) {
+		symbole = s;
 	}
 	/* (non-Javadoc)
 	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
