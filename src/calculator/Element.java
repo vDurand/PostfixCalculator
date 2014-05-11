@@ -31,7 +31,7 @@ public class Element implements IElement {
 	   */
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
-		String [] contenuInfix = new String [1024];
+		/*String [] contenuInfix = new String [1024];
 		int i = 0;
 		while (!chaines.empty()) {
 			String current = chaines.pop();
@@ -48,7 +48,8 @@ public class Element implements IElement {
 				i++;
 			}
 		}
-		return contenuInfix[0];
+		return contenuInfix[0];*/
+		return null;
 	}
 
 	  /**

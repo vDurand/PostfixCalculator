@@ -14,6 +14,7 @@ public class Expression implements IExpression {
 	
 	protected String contenu;
 	protected Stack<Element> expression;
+	protected Stack<Element> infixStack;
 	protected Element [] liste;
 	protected int taille;
 	protected IIdentifiants ids;
@@ -26,6 +27,7 @@ public class Expression implements IExpression {
 		affichagePile = false;
 		this.contenu = contenu;
 		expression  = new Stack<Element>();
+		infixStack  = new Stack<Element>();
 		taille = 0;
 		this.StringToTab();
 		this.analyse(ids);
@@ -65,19 +67,19 @@ public class Expression implements IExpression {
 			current = temp.pop();
 			if((current.matches("[+-/^*]"))||(current.equals("neg"))||(current.equals("cos"))){
 				switch (current){
-				case "+": liste[i] = new binaires.Addition(); expression.push(liste[i]);
+				case "+": liste[i] = new binaires.Addition(); expression.push(liste[i]); infixStack.push(liste[i]);
 				break;
-				case "/": liste[i] = new binaires.Division(); expression.push(liste[i]);
+				case "/": liste[i] = new binaires.Division(); expression.push(liste[i]); infixStack.push(liste[i]);
 				break;
-				case "*": liste[i] = new binaires.Multiplication(); expression.push(liste[i]);
+				case "*": liste[i] = new binaires.Multiplication(); expression.push(liste[i]); infixStack.push(liste[i]);
 				break;
-				case "^": liste[i] = new binaires.Puissance(); expression.push(liste[i]);
+				case "^": liste[i] = new binaires.Puissance(); expression.push(liste[i]); infixStack.push(liste[i]);
 				break;
-				case "-": liste[i] = new binaires.Soustraction(); expression.push(liste[i]);
+				case "-": liste[i] = new binaires.Soustraction(); expression.push(liste[i]); infixStack.push(liste[i]);
 				break;
-				case "cos": liste[i] = new unaires.Cos(); expression.push(liste[i]);
+				case "cos": liste[i] = new unaires.Cos(); expression.push(liste[i]); infixStack.push(liste[i]);
 				break;
-				case "neg": liste[i] = new unaires.Neg(); expression.push(liste[i]);
+				case "neg": liste[i] = new unaires.Neg(); expression.push(liste[i]); infixStack.push(liste[i]);
 				break;
 				}
 			}
@@ -94,7 +96,7 @@ public class Expression implements IExpression {
 			}
 			i++;*/
 			else if(current.matches("^[0-9].*")){
-				liste[i] = new Nombre(Double.parseDouble(current)); expression.push(liste[i]);
+				liste[i] = new Nombre(Double.parseDouble(current)); expression.push(liste[i]); infixStack.push(liste[i]);
 			}
 			else{
 				@SuppressWarnings("resource")
@@ -102,7 +104,7 @@ public class Expression implements IExpression {
 				System.out.print("Expressions de " + current + " : ");
 				Expression e2=new Expression(idEntree.nextLine());
 				liste[i] = new Identifiant(current, e2);
-				expression.push(liste[i]);
+				expression.push(liste[i]); infixStack.push(liste[i]);
 			}
 			i++;
 		}
@@ -118,7 +120,11 @@ public class Expression implements IExpression {
 	@Override
 	public double calcule(IPile pile, IIdentifiants ids) {
 		for(int i=0; i<taille; i++){
-			expression.pop().calcule(pile, ids);
+			try {
+				expression.pop().calcule(pile, ids);
+			} catch (IllegalStateException e) {
+				System.out.println(e.getMessage());
+			}
 			if(affichagePile)
 				System.out.println(pile);
 		}
@@ -131,7 +137,7 @@ public class Expression implements IExpression {
 	   */
 	@Override
 	public String toStringInfix() {
-		StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
+		/*StringTokenizer contenuTokenized = new StringTokenizer(contenu," ",false);
 		String [] contenuInfix = new String [1024];
 		int i = 0;
 		
@@ -154,7 +160,14 @@ public class Expression implements IExpression {
 				i++;
 			}
 		}
-		return contenuInfix[0];
+		return contenuInfix[0];*/
+		String infixString = "> ";
+		Stack<String> stringStack  = new Stack<String>();
+		while(!infixStack.empty()){
+			infixStack.pop().toStringInfix(stringStack);
+		}
+		infixString = stringStack.pop();
+		return infixString;
 	}
 
 	  /**

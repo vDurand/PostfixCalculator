@@ -25,7 +25,7 @@ public class Calculateur {
 			if(reponse.equals("Oui"))
 				e1.showPile();
 			Pile calculateur = new Pile(e1.taille);
-			System.out.println("> " + e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids));
+			System.out.println(e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids));
 			System.out.println("\n\n *OVER*");
 		}
 

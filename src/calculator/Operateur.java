@@ -28,14 +28,26 @@ public class Operateur extends Element implements IOperateur {
 		return val;
 	}
 
-	/* (non-Javadoc)
-	 * @see calculator.IElement#analyse(java.util.Stack, calculator.IIdentifiants)
-	 */
+	  /**
+	   * Vérifie si cet élément est compatible avec la pile et répertorie les identifiants utilisés.
+	   * Utilise une pile pour évaluer si le calcul est possible.
+	   * @param elements La pile de l'analyse en cours. Sera modifiée par l'analyse.
+	   * @param ids Les identifiants en cours. Sera éventuellement modifié par l'ajout d'identifiants.
+	   * @throws NoSuchElementException si cet élément est incompatible avec la pile 
+	   */
 	@Override
 	public void analyse(Stack<IElement> elements, IIdentifiants ids)
 			throws NoSuchElementException {
-		// TODO Auto-generated method stub
-
+		String msg = "Calcul Impossible : ";
+		if(elements.empty())
+			throw new NoSuchElementException(msg + "La pile est vide");
+		if(!(elements.peek() instanceof Nombre))
+			throw new NoSuchElementException(msg + "L'element a calculer n'est pas un nombre");
+		elements.pop();
+		if(elements.empty())
+			throw new NoSuchElementException(msg + "La pile ne contient qu'un element");
+		if(!(elements.peek() instanceof Nombre))
+			throw new NoSuchElementException(msg + "L'element a calculer n'est pas un nombre");
 	}
 
 }

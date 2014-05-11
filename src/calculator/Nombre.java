@@ -16,14 +16,18 @@ public class Nombre extends Element implements INombre {
 	public Nombre(Double d) {
 		val = d;
 	}
-	/* (non-Javadoc)
-	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
-	 */
+	  /**
+	   * Calcule la valeur de cet élément.
+	   * @param evaluations la pile d'évaluation. Sera modifiée par l'élément
+	   * @param ids les identifiants connus. Peut être modifié si un identifiant doit être ajouté.
+	   * @return la valeur de cet élément
+	   * @throws IllegalStateException si l'élément est incalculable
+	   */
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
 		evaluations.ajoute(val);
-		return 0;
+		return val;
 	}
 
 	/* (non-Javadoc)
@@ -31,8 +35,8 @@ public class Nombre extends Element implements INombre {
 	 */
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
-		// TODO Auto-generated method stub
-		return null;
+		String s = chaines.push(" "+val+" ");
+		return s;
 	}
 
 	/* (non-Javadoc)

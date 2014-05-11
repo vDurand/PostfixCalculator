@@ -21,9 +21,13 @@ public class Soustraction extends calculator.Operateur implements ISoustration {
 		super("-");
 	}
 	
-	/* (non-Javadoc)
-	 * @see calculator.IElement#calcule(calculator.IPile, calculator.IIdentifiants)
-	 */
+	  /**
+	   * Calcule la valeur de cet élément.
+	   * @param evaluations la pile d'évaluation. Sera modifiée par l'élément
+	   * @param ids les identifiants connus. Peut être modifié si un identifiant doit être ajouté.
+	   * @return la valeur de cet élément
+	   * @throws IllegalStateException si l'élément est incalculable
+	   */
 	@Override
 	public double calcule(IPile evaluations, IIdentifiants ids)
 			throws IllegalStateException {
@@ -33,23 +37,15 @@ public class Soustraction extends calculator.Operateur implements ISoustration {
 		return resultat;
 	}
 
-	/* (non-Javadoc)
-	 * @see calculator.IElement#toStringInfix(java.util.Stack)
-	 */
+	  /**
+	   * Construit une représentation infixe de cet élément à l'aide d'une pile, et l'ajoute sur la pile.
+	   * @param chaines une pile de représentations infixes.
+	   * @return la chaîne représentant cet élément de manière infixe.
+	   */
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
-		// TODO Auto-generated method stub
-		return null;
+		String soustracteur = chaines.pop();
+		String val = chaines.push("(" + chaines.pop() + " " + symbole + " " + soustracteur + ")");
+		return val;
 	}
-
-	/* (non-Javadoc)
-	 * @see calculator.IElement#analyse(java.util.Stack, calculator.IIdentifiants)
-	 */
-	@Override
-	public void analyse(Stack<IElement> elements, IIdentifiants ids)
-			throws NoSuchElementException {
-		// TODO Auto-generated method stub
-
-	}
-
 }

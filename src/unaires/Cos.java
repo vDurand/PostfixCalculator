@@ -6,6 +6,7 @@ import java.util.Stack;
 import calculator.IElement;
 import calculator.IIdentifiants;
 import calculator.IPile;
+import calculator.Nombre;
 
 /**
  * @author Valentin Durand - TP1.1 - 1A - DUT Informatique - IUT Ifs
@@ -57,8 +58,11 @@ public class Cos extends calculator.Operateur implements ICos {
 	@Override
 	public void analyse(Stack<IElement> elements, IIdentifiants ids)
 			throws NoSuchElementException {
-		// TODO Auto-generated method stub
-
+		String msg = "Calcul Impossible : ";
+		if(elements.empty())
+			throw new NoSuchElementException(msg + "La pile est vide");
+		if(!(elements.peek() instanceof Nombre))
+			throw new NoSuchElementException(msg + "L'element a calculer n'est pas un nombre");
 	}
 
 }

@@ -82,8 +82,13 @@ public class Identifiant extends Element implements IIdentifiant {
 	   */
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
-		// TODO Auto-generated method stub
-		return null;
+		Stack<String> toStringStack = new Stack<String>();
+		toStringStack = (Stack<String>) chaines.clone();
+		String infixString = null;
+		while(!toStringStack.empty()){
+			infixString += toStringStack.pop().toString();
+		}
+		return infixString;
 	}
 
 	  /**
