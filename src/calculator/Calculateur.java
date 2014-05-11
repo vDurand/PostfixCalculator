@@ -1,5 +1,10 @@
 package calculator;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -30,12 +35,29 @@ public class Calculateur {
 				result = e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids);
 				if(e1.divisible){
 					System.out.println(result);
+					writeToFile("Resultats.txt", result);
 				}
 			}
 			System.out.println();
 			System.out.println("\n\n *OVER*");
 		}
 
+	}
+	
+	public static void writeToFile(String fileName, String text){
+		try{
+			FileWriter fWriter = new FileWriter(fileName);
+			BufferedWriter bWriter = new BufferedWriter(fWriter);
+			PrintWriter pWriter = new PrintWriter(bWriter);
+			System.out.println("Success :)");
+			pWriter.println(text);
+			pWriter.close();
+		}catch(IOException EIO){
+			System.out.println("Openning error !");
+			if(EIO instanceof FileNotFoundException){
+				System.out.println("File not found X(");
+			}
+		}
 	}
 
 }
