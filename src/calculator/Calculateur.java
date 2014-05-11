@@ -36,7 +36,7 @@ public class Calculateur {
 				e1.showPile();
 			Pile calculateur = new Pile(e1.taille);
 			if(e1.calculable){
-				result = e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids);
+				result = e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids) + " avec " + e1.ids;
 				if(e1.divisible){
 					e1.resultatString += "\n" + result + "\n";
 					System.out.println(result);

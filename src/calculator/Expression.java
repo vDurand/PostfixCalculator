@@ -75,6 +75,7 @@ public class Expression implements IExpression {
 		taille = i;
 		String current;
 		i = 0;
+		int j = 0;
 		
 		while(!temp.empty()){
 			//System.out.println(temp.peek());
@@ -126,9 +127,11 @@ public class Expression implements IExpression {
 					System.out.print("Expressions de " + current + " : ");
 					Expression e2=new Expression(idEntree.nextLine());
 					ids.ajoute(current);
+					ids.set(j, e2);
+					//expression.push(ids.idList[j]);
 					liste[i] = new Identifiant(current, e2);
 					expression.push(liste[i]);
-					
+					j++;
 				}
 				catch(IllegalAccessError e) {
 					throw new NoSuchElementException("Erreur: Identifiant deja utilise ("+current+").");

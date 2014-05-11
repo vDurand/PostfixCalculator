@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 public class Identifiants implements IIdentifiants {
 	
 	protected Identifiant [] idList;
-	private static int numberId;
+	private int numberId;
 	
 	/**
 	 * Constructeur : Identifiants
@@ -26,7 +26,7 @@ public class Identifiants implements IIdentifiants {
 	   */
 	@Override
 	public int getNombre() {
-		return numberId-1;
+		return numberId;
 	}
 
 	  /**
@@ -43,10 +43,8 @@ public class Identifiants implements IIdentifiants {
 		if(contient(id)){
 			throw new IllegalAccessError();
 		}
-		else{
-			idList[numberId] = new Identifiant(id, null);
-			numberId++;
-		}
+		idList[numberId] = new Identifiant(id, null);
+		numberId++;
 	}
 
 	  /**
@@ -93,7 +91,7 @@ public class Identifiants implements IIdentifiants {
 	   */
 	public int getIdx(String id) {
 		int trouve = -1;
-		if(numberId > 1){
+		if(numberId > 0){
 			for(int i = 0; i < numberId; i++)
 				if(idList[i].getSymbole() == id)
 					trouve = i;
@@ -143,6 +141,11 @@ public class Identifiants implements IIdentifiants {
 	   */
 	@Override
 	public String toString() {
-		return null;
+		String r = "{ ";
+		for (int i = 0; i < numberId; i++){
+			r += idList[i].getSymbole() + "=" + idList[i].getValeur() + " ";
+		}
+		r += "}";
+		return r;
 	}
 }
