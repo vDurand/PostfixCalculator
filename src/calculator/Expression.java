@@ -19,18 +19,28 @@ public class Expression implements IExpression {
 	protected int taille;
 	protected IIdentifiants ids;
 	private boolean affichagePile;
+	protected boolean calculable;
+	protected boolean divisible;
 	
 	/**
 	 * Constructeur : Expression
 	 */
 	public Expression(String contenu) {
 		affichagePile = false;
+		calculable = true;
+		divisible = true;
 		this.contenu = contenu;
 		expression  = new Stack<Element>();
 		//infixStack  = new Stack<Element>();
 		taille = 0;
 		this.StringToTab();
-		this.analyse(ids);
+		try{
+			this.analyse(ids);
+		}
+		catch(NoSuchElementException e){
+			calculable = false;
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public void showPile(){
@@ -108,6 +118,19 @@ public class Expression implements IExpression {
 			}
 			i++;
 		}
+		Stack<Element> verifStack = (Stack<Element>) expression.clone();
+		Stack<IElement> verificateur = new Stack<IElement>();
+		while(!verifStack.empty()){
+			try{
+				verifStack.pop().analyse(verificateur, ids);
+			}catch(NoSuchElementException e){
+				System.out.println(e.getMessage());
+				throw new NoSuchElementException("");
+			}
+		}
+		verificateur.pop();
+		if(!verificateur.empty())
+			throw new NoSuchElementException("Argument manquant");
 	}
 
 	  /**
@@ -122,11 +145,12 @@ public class Expression implements IExpression {
 		for(int i=0; i<taille; i++){
 			try {
 				expression.pop().calcule(pile, ids);
+				if(affichagePile)
+					System.out.println(pile);
 			} catch (IllegalStateException e) {
 				System.out.println(e.getMessage());
+				divisible = false;
 			}
-			if(affichagePile)
-				System.out.println(pile);
 		}
 		return pile.retire();
 	}

@@ -30,22 +30,28 @@ public class Nombre extends Element implements INombre {
 		return val;
 	}
 
-	/* (non-Javadoc)
-	 * @see calculator.IElement#toStringInfix(java.util.Stack)
-	 */
+	  /**
+	   * Construit une représentation infixe de cet élément à l'aide d'une pile, et l'ajoute sur la pile.
+	   * @param chaines une pile de représentations infixes.
+	   * @return la chaîne représentant cet élément de manière infixe.
+	   */
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
 		String s = chaines.push(" "+val+" ");
 		return s;
 	}
 
-	/* (non-Javadoc)
-	 * @see calculator.IElement#analyse(java.util.Stack, calculator.IIdentifiants)
-	 */
+	  /**
+	   * Vérifie si cet élément est compatible avec la pile et répertorie les identifiants utilisés.
+	   * Utilise une pile pour évaluer si le calcul est possible.
+	   * @param elements La pile de l'analyse en cours. Sera modifiée par l'analyse.
+	   * @param ids Les identifiants en cours. Sera éventuellement modifié par l'ajout d'identifiants.
+	   * @throws NoSuchElementException si cet élément est incompatible avec la pile 
+	   */
 	@Override
 	public void analyse(Stack<IElement> elements, IIdentifiants ids)
 			throws NoSuchElementException {
-		// TODO Auto-generated method stub
+		elements.push(this);
 
 	}
 

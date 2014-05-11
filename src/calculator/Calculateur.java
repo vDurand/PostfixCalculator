@@ -22,10 +22,17 @@ public class Calculateur {
 			String reponse = entree.nextLine();
 			System.out.print("\n\nExpression a calculer : ");
 			Expression e1=new Expression(entree.nextLine());
+			String result = null;
 			if(reponse.equals("Oui"))
 				e1.showPile();
 			Pile calculateur = new Pile(e1.taille);
-			System.out.println(e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids));
+			if(e1.calculable){
+				result = e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids);
+				if(e1.divisible){
+					System.out.println(result);
+				}
+			}
+			System.out.println();
 			System.out.println("\n\n *OVER*");
 		}
 
