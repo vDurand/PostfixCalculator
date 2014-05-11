@@ -118,6 +118,7 @@ public class Expression implements IExpression {
 			}
 			i++;
 		}
+		@SuppressWarnings("unchecked")
 		Stack<Element> verifStack = (Stack<Element>) expression.clone();
 		Stack<IElement> verificateur = new Stack<IElement>();
 		while(!verifStack.empty()){
@@ -185,7 +186,8 @@ public class Expression implements IExpression {
 			}
 		}
 		return contenuInfix[0];*/
-		String infixString = "> ";
+		String infixString = "";
+		@SuppressWarnings("unchecked")
 		Stack<Element> infixStack = (Stack<Element>) expression.clone();
 		Stack<String> stringStack  = new Stack<String>();
 		while(!infixStack.empty()){

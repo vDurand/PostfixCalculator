@@ -82,13 +82,15 @@ public class Identifiant extends Element implements IIdentifiant {
 	   */
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
-		Stack<String> toStringStack = new Stack<String>();
+		/*Stack<String> toStringStack = new Stack<String>();
 		toStringStack = (Stack<String>) chaines.clone();
 		String infixString = null;
 		while(!toStringStack.empty()){
 			infixString += toStringStack.pop().toString();
 		}
-		return infixString;
+		return infixString;*/
+		String s = chaines.push(" "+valeur.toStringInfix()+" ");
+		return s;
 	}
 
 	  /**
@@ -101,8 +103,8 @@ public class Identifiant extends Element implements IIdentifiant {
 	@Override
 	public void analyse(Stack<IElement> elements, IIdentifiants ids)
 			throws NoSuchElementException {
-		// TODO Auto-generated method stub
-
+		Nombre item = new Nombre(1.0);
+		elements.push(item);
 	}
 
 }

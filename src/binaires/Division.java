@@ -1,9 +1,6 @@
 package binaires;
 
-import java.util.NoSuchElementException;
 import java.util.Stack;
-
-import calculator.IElement;
 import calculator.IIdentifiants;
 import calculator.IPile;
 
