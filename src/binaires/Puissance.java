@@ -42,7 +42,7 @@ public class Puissance extends calculator.Operateur implements IPuissance {
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
 		String exposant = chaines.pop();
-		String val = chaines.push("(" + chaines.pop() + " " + symbole + " " + exposant + ")");
+		String val = chaines.push("(" + chaines.pop() + "" + symbole + "" + exposant + ")");
 		return val;
 	}
 }

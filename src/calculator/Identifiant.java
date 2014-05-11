@@ -89,7 +89,7 @@ public class Identifiant extends Element implements IIdentifiant {
 			infixString += toStringStack.pop().toString();
 		}
 		return infixString;*/
-		String s = chaines.push(" "+valeur.toStringInfix()+" ");
+		String s = chaines.push(""+valeur.toStringInfix()+"");
 		return s;
 	}
 

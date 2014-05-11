@@ -42,7 +42,7 @@ public class Soustraction extends calculator.Operateur implements ISoustration {
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
 		String soustracteur = chaines.pop();
-		String val = chaines.push("(" + chaines.pop() + " " + symbole + " " + soustracteur + ")");
+		String val = chaines.push("(" + chaines.pop() + "" + symbole + "" + soustracteur + ")");
 		return val;
 	}
 }

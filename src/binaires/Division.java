@@ -44,7 +44,7 @@ public class Division extends calculator.Operateur implements IDivision {
 	@Override
 	public String toStringInfix(Stack<String> chaines) {
 		String diviseur = chaines.pop();
-		String val = chaines.push("(" + chaines.pop() + " " + symbole + " " + diviseur + ")");
+		String val = chaines.push("(" + chaines.pop() + symbole + diviseur + ")");
 		return val;
 	}
 }
