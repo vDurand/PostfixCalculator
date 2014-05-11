@@ -25,8 +25,12 @@ public class Calculateur {
 			System.out.println("Veuillez entrer une formule (chaque element doit etre separe par un espace).");
 			System.out.print("Voulez-vous afficher la pile des calculs effectués ? (Oui/Non) : ");
 			String reponse = entree.nextLine();
-			System.out.print("\n\nExpression a calculer : ");
-			Expression e1=new Expression(entree.nextLine());
+			String expRep;
+			do{
+				System.out.print("\n\nExpression a calculer : ");
+				expRep = entree.nextLine();
+			} while (!expRep.matches("^[a-zA-Z0-9].*"));
+			Expression e1=new Expression(expRep);
 			String result = null;
 			if(reponse.equals("Oui"))
 				e1.showPile();
@@ -49,7 +53,6 @@ public class Calculateur {
 			FileWriter fWriter = new FileWriter(fileName);
 			BufferedWriter bWriter = new BufferedWriter(fWriter);
 			PrintWriter pWriter = new PrintWriter(bWriter);
-			System.out.println("Success :)");
 			pWriter.println(text);
 			pWriter.close();
 		}catch(IOException EIO){

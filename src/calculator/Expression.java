@@ -17,7 +17,7 @@ public class Expression implements IExpression {
 	//protected Stack<Element> infixStack;
 	protected Element [] liste;
 	protected int taille;
-	protected IIdentifiants ids;
+	protected Identifiants ids;
 	private boolean affichagePile;
 	protected boolean calculable;
 	protected boolean divisible;
@@ -72,6 +72,7 @@ public class Expression implements IExpression {
 		taille = i;
 		String current;
 		i = 0;
+		
 		while(!temp.empty()){
 			//System.out.println(temp.peek());
 			current = temp.pop();
@@ -105,16 +106,33 @@ public class Expression implements IExpression {
 				liste[i] = new Nombre(Double.parseDouble(current)); expression.push(liste[i]);
 			}
 			i++;*/
-			else if(current.matches("^[0-9].*")){
+			else if(current.matches("^[0-9]+\\.?[0-9]*$")){ //^[0-9].*
 				liste[i] = new Nombre(Double.parseDouble(current)); expression.push(liste[i]); //infixStack.push(liste[i]);
 			}
+			else if(current.matches("^[a-zA-Z].*")){
+				try{
+					/*@SuppressWarnings("resource")
+					Scanner idEntree = new Scanner(System.in);
+					System.out.print("Expressions de " + current + " : ");
+					Expression e2=new Expression(idEntree.nextLine());
+					liste[i] = new Identifiant(current, e2);
+					expression.push(liste[i]); //infixStack.push(liste[i]);
+					ids.ajoute(current);*/
+					@SuppressWarnings("resource")
+					Scanner idEntree = new Scanner(System.in);
+					System.out.print("Expressions de " + current + " : ");
+					Expression e2=new Expression(idEntree.nextLine());
+					ids.ajoute(current);
+					liste[i] = new Identifiant(current, e2);
+					expression.push(liste[i]);
+					
+				}
+				catch(IllegalAccessError e) {
+					throw new NoSuchElementException("Erreur: Identifiant deja utilise ("+current+").");
+				}
+			}
 			else{
-				@SuppressWarnings("resource")
-				Scanner idEntree = new Scanner(System.in);
-				System.out.print("Expressions de " + current + " : ");
-				Expression e2=new Expression(idEntree.nextLine());
-				liste[i] = new Identifiant(current, e2);
-				expression.push(liste[i]); //infixStack.push(liste[i]);
+				throw new NoSuchElementException("Erreur: Caractère invalide ("+current+").");
 			}
 			i++;
 		}

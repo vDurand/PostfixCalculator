@@ -40,11 +40,13 @@ public class Identifiants implements IIdentifiants {
 	   */
 	@Override
 	public void ajoute(String id) throws IllegalAccessError {
-		if(contient(id))
+		if(contient(id)){
 			throw new IllegalAccessError();
-		idList[numberId].setSymbole(id);
-		idList[numberId].setValeur(null);
-		numberId++;
+		}
+		else{
+			idList[numberId] = new Identifiant(id, null);
+			numberId++;
+		}
 	}
 
 	  /**
@@ -91,9 +93,11 @@ public class Identifiants implements IIdentifiants {
 	   */
 	public int getIdx(String id) {
 		int trouve = -1;
-		for(int i = 0; i < numberId; i++)
-			if(idList[i].getSymbole() == id)
-				trouve = i;
+		if(numberId > 1){
+			for(int i = 0; i < numberId; i++)
+				if(idList[i].getSymbole() == id)
+					trouve = i;
+		}
 		return trouve;
 	}
 
@@ -104,8 +108,7 @@ public class Identifiants implements IIdentifiants {
 	   */
 	@Override
 	public boolean contient(String id) {
-		return ((get(id) != null) &&
-				(getIdx(id) != -1));
+		return (getIdx(id) != -1);
 	}
 
 	  /**
