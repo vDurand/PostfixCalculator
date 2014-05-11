@@ -38,9 +38,18 @@ public class Calculateur {
 			if(e1.calculable){
 				result = e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids);
 				if(e1.divisible){
+					e1.resultatString += "\n" + result + "\n";
 					System.out.println(result);
-					writeToFile("Resultats.txt", result);
+					writeToFile("Resultats.txt", e1.resultatString);
 				}
+				else{
+					e1.erreurString += "\n";
+					writeToFile("Erreurs.txt", e1.erreurString);
+				}
+			}
+			else{
+				e1.erreurString += "\n";
+				writeToFile("Erreurs.txt", e1.erreurString);
 			}
 			System.out.println();
 			System.out.println("\n\n *OVER*");
@@ -49,13 +58,21 @@ public class Calculateur {
 	}
 	
 	public static void writeToFile(String fileName, String text){
-		try{
+		/*try{
 			FileWriter fWriter = new FileWriter(fileName);
 			BufferedWriter bWriter = new BufferedWriter(fWriter);
 			PrintWriter pWriter = new PrintWriter(bWriter);
 			pWriter.println(text);
 			pWriter.close();
 		}catch(IOException EIO){
+			System.out.println("Openning error !");
+			if(EIO instanceof FileNotFoundException){
+				System.out.println("File not found X(");
+			}
+		}*/
+		try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)))) {
+		    out.println(text);
+		}catch (IOException EIO) {
 			System.out.println("Openning error !");
 			if(EIO instanceof FileNotFoundException){
 				System.out.println("File not found X(");

@@ -1,0 +1,6 @@
+Expression à calculer : 1 +
+Calcul Impossible : La pile ne contient qu'un element
+
+Expression à calculer : 1 1 1 +
+Argument manquant
+

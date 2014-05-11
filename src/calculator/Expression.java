@@ -14,13 +14,14 @@ public class Expression implements IExpression {
 	
 	protected String contenu;
 	protected Stack<Element> expression;
-	//protected Stack<Element> infixStack;
 	protected Element [] liste;
 	protected int taille;
 	protected Identifiants ids;
 	private boolean affichagePile;
 	protected boolean calculable;
 	protected boolean divisible;
+	protected String resultatString;
+	protected String erreurString;
 	
 	/**
 	 * Constructeur : Expression
@@ -30,8 +31,9 @@ public class Expression implements IExpression {
 		calculable = true;
 		divisible = true;
 		this.contenu = contenu;
+		resultatString = "Expression à calculer : " + contenu;
+		erreurString = "Expression à calculer : " + contenu + "\n";
 		expression  = new Stack<Element>();
-		//infixStack  = new Stack<Element>();
 		taille = 0;
 		this.StringToTab();
 		try{
@@ -40,6 +42,7 @@ public class Expression implements IExpression {
 		catch(NoSuchElementException e){
 			calculable = false;
 			System.out.println(e.getMessage());
+			erreurString += e.getMessage();
 		}
 	}
 	
@@ -144,6 +147,7 @@ public class Expression implements IExpression {
 				verifStack.pop().analyse(verificateur, ids);
 			}catch(NoSuchElementException e){
 				System.out.println(e.getMessage());
+				erreurString += e.getMessage();
 				throw new NoSuchElementException("");
 			}
 		}
@@ -164,10 +168,13 @@ public class Expression implements IExpression {
 		for(int i=0; i<taille; i++){
 			try {
 				expression.pop().calcule(pile, ids);
-				if(affichagePile)
+				if(affichagePile){
 					System.out.println(pile);
+					resultatString += "\n" + pile;
+				}
 			} catch (IllegalStateException e) {
 				System.out.println(e.getMessage());
+				erreurString += e.getMessage();
 				divisible = false;
 			}
 		}
