@@ -51,3 +51,15 @@ Expression à calculer : 4 a +
 [ 13.0 ]
 (( 5.0 + 4.0 )+ 4.0 ) = 13.0 avec { a=4 5 + }
 
+Expression à calculer : 1 a +
+( 5.0 + 1.0 ) = 6.0 avec { a=5 }
+
+Expression à calculer : a b -
+[ 5.0 ]
+[ 1.0, 5.0 ]
+[ 4.0 ]
+( 5.0 - 1.0 ) = 4.0 avec { b=a a=5 }
+
+Expression à calculer : dfg
+ 789.0  = 789.0 avec { dfg=789 }
+

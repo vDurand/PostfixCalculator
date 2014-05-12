@@ -4,3 +4,6 @@ Calcul Impossible : La pile ne contient qu'un element
 Expression à calculer : 1 1 1 +
 Argument manquant
 
+Expression à calculer : sdas +
+Calcul Impossible : La pile ne contient qu'un element
+

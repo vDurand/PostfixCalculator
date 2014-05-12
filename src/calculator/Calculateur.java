@@ -25,6 +25,15 @@ public class Calculateur {
 			System.out.println("Veuillez entrer une formule (chaque element doit etre separe par un espace).");
 			System.out.print("Voulez-vous afficher la pile des calculs effectués ? (Oui/Non) : ");
 			String reponse = entree.nextLine();
+			if(reponse.matches("(?i)oui")){
+				System.out.println("Oui : La pile sera affichee");
+			}
+			else if(reponse.matches("(?i)non")){
+				System.out.println("Non : La pile sera masquee");
+			}
+			else{
+				System.out.println("Mauvaise entree : Pile masquee par defaut");
+			}
 			String expRep;
 			do{
 				System.out.print("\n\nExpression a calculer : ");
@@ -32,8 +41,9 @@ public class Calculateur {
 			} while (!expRep.matches("^[a-zA-Z0-9].*"));
 			Expression e1=new Expression(expRep);
 			String result = null;
-			if(reponse.equals("Oui"))
+			if(reponse.matches("(?i)oui")){
 				e1.showPile();
+			}
 			Pile calculateur = new Pile(e1.taille);
 			if(e1.calculable){
 				result = e1.toStringInfix() + " = " + e1.calcule(calculateur, e1.ids) + " avec " + e1.ids;
@@ -51,8 +61,7 @@ public class Calculateur {
 				e1.erreurString += "\n";
 				writeToFile("Erreurs.txt", e1.erreurString);
 			}
-			System.out.println();
-			System.out.println("\n\n *OVER*");
+			System.out.println("\n________________\n");
 		}
 
 	}
